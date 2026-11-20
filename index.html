@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#08131f" />
+  <meta name="description" content="A cinematic birthday surprise made especially for Kak Dedo." />
+  <title>A Little Birthday Film — Mbak Dedo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <canvas id="world" aria-label="Animasi 3D ulang tahun Kak Dedo"></canvas>
+
+    <div class="world-wash" aria-hidden="true"></div>
+    <div class="film-grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="edge-glow" aria-hidden="true"></div>
+    <div class="transition-curtain" id="transitionCurtain" aria-hidden="true"></div>
+
+    <!-- LOADING -->
+    <section class="loader-screen" id="loadingScreen" aria-live="polite">
+      <div class="loader-mark"><span></span><span></span><span></span></div>
+      <p class="micro-label">A MOMENT PREPARED WITH CARE</p>
+      <h1>Kak Dedo<span>.</span></h1>
+      <div class="loader-line"><span id="loadingBar"></span></div>
+      <p class="loader-status" id="loadingStatus">Menyiapkan kejutan...</p>
+    </section>
+
+    <!-- OPENING TITLE -->
+    <section class="intro-screen" id="introScreen">
+      <div class="intro-topline">
+        <div class="brand-lockup">
+          <span class="brand-star">✦</span>
+          <span>THE LITTLE BIRTHDAY FILM</span>
+        </div>
+        <span class="intro-edition">A SPECIAL EDITION <b>·</b> 01</span>
+      </div>
+
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="eyebrow-rule"></span> A DAY WORTH CELEBRATING</p>
+        <h1>A little moment<br />for <em>Kak Dedo.</em></h1>
+        <p class="intro-description">Sebuah kejutan kecil, dirangkai dengan hangat untuk hari yang istimewa.</p>
+        <button class="gold-button" id="startButton" type="button">
+          <span>Mulai perjalanan</span>
+          <span class="button-arrow">↗</span>
+        </button>
+      </div>
+
+      <div class="intro-bottomline">
+        <span>MADE WITH APPRECIATION</span>
+        <span class="intro-scroll"><i></i> A MOMENT TO REMEMBER</span>
+        <span>2026 <b>✦</b></span>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE UI -->
+    <main class="experience-ui" id="experienceUI" aria-live="polite">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <span class="brand-star">✦</span>
+          <span>THE LITTLE BIRTHDAY FILM</span>
+        </div>
+        <div class="scene-index"><span id="sceneCounter">01</span><i></i><span>06</span></div>
+        <button class="sound-button" id="soundButton" type="button" aria-label="Matikan suara">
+          <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span id="soundLabel">SOUND ON</span>
+        </button>
+      </header>
+
+      <section class="story-panel" id="storyPanel">
+        <p class="story-kicker" id="storyEyebrow">THE WELCOME</p>
+        <h2 id="storyTitle">Selamat datang,<br /><em>Kak Dedo.</em></h2>
+        <p class="story-description" id="storyDescription">Ada satu momen kecil yang dipersiapkan khusus untukmu.</p>
+        <div class="story-divider"><span></span><i>✦</i><span></span></div>
+      </section>
+
+      <div class="action-wrap" id="actionWrap">
+        <button class="gold-button action-button" id="actionButton" type="button">
+          <span id="actionLabel">Masuk ke kejutan</span>
+          <span class="button-arrow">↗</span>
+        </button>
+      </div>
+
+      <footer class="film-controls">
+        <div class="progress-track"><span id="progressBar"></span></div>
+        <div class="control-row">
+          <div class="control-caption">
+            <span class="caption-dot"></span>
+            <span id="navigationHint">AN EXPERIENCE FOR KAK DEDO</span>
+          </div>
+          <div class="navigation-buttons">
+            <button class="nav-button" id="prevButton" type="button" aria-label="Adegan sebelumnya">←</button>
+            <button class="nav-button nav-next" id="nextButton" type="button" aria-label="Adegan berikutnya">→</button>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <div class="scene-flash" id="flash" aria-hidden="true"></div>
+
+    <!-- AUDIO: place the matching MP3 files inside assets/ -->
+    <audio id="backgroundMusic" src="assets/music.mp3" loop preload="auto"></audio>
+    <audio id="birthdayMusic" src="assets/birthday.mp3" preload="auto"></audio>
+    <audio id="whooshSound" src="assets/whoosh.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="assets/click.mp3" preload="auto"></audio>
+    <audio id="surpriseSound" src="assets/surprise.mp3" preload="auto"></audio>
+    <audio id="crowdSound" src="assets/crowd-cheer.mp3" preload="auto"></audio>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
